@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vikas Rawat - Head of IT</title>
+    <title>Vikas Rawat - Senior IT Professional</title>
     <style>
         /* --- Google Font --- */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-        /* --- Global Styles --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* --- Global Styles & Variables --- */
+        :root {
+            --primary-color: #1abc9c;
+            --secondary-color: #2c3e50;
+            --light-bg: #f0f2f5;
+            --text-dark: #333;
+            --text-light-grey: #7f8c8d;
+            --glow-color: rgba(26, 188, 156, 0.7);
         }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
             line-height: 1.6;
         }
 
@@ -32,244 +37,206 @@
             overflow: hidden;
         }
 
-        /* --- Left Column (Dark) --- */
+        /* --- Left Column (Sidebar) --- */
         .left-column {
-            background-color: #2c3e50;
+            background-color: var(--secondary-color);
             color: #ecf0f1;
             padding: 40px;
             width: 35%;
+            display: flex;
+            flex-direction: column;
         }
+        .profile-section { text-align: center; margin-bottom: 30px; }
+        .profile-pic { width: 150px; height: 180px; border-radius: 10px; border: 4px solid var(--primary-color); object-fit: cover; box-shadow: 0 0 15px var(--glow-color); }
+        .left-column h3 { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .left-column ul { list-style: none; }
+        .left-column ul li { margin-bottom: 15px; }
+        .left-column section { margin-bottom: 25px; }
 
-        .left-column h3 {
-            color: #1abc9c;
-            border-bottom: 2px solid #1abc9c;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .left-column ul {
-            list-style: none;
-        }
-
-        .left-column ul li {
-            margin-bottom: 15px;
-        }
-
-        .contact-info i {
-            margin-right: 15px;
-            color: #1abc9c;
-            width: 20px;
-            text-align: center;
+        .contact-info li { display: flex; align-items: center; }
+        .contact-info i { margin-right: 15px; color: var(--primary-color); width: 20px; text-align: center; font-size: 1.2em; transition: transform 0.3s ease-in-out; }
+        .contact-info li:hover i { transform: scale(1.2) translateY(-2px); }
+        .contact-info a { color: #ecf0f1; text-decoration: none; transition: all 0.3s; }
+        .contact-info a:hover {
+            color: #fff;
+            text-shadow: 0 0 8px var(--glow-color);
         }
         
-        .contact-info a {
-            color: #ecf0f1;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+        .competency-item { margin-bottom: 25px !important; }
+        .competency-item strong { display: block; font-weight: 600; color: #ffffff; transition: all 0.3s ease; cursor: pointer; margin-bottom: 12px; }
+        .competency-item strong:hover { color: var(--primary-color); text-shadow: 0 0 10px var(--glow-color); transform: translateX(5px); }
+        .competency-details { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag { display: inline-block; background-color: #34495e; color: #ecf0f1; padding: 5px 12px; border-radius: 15px; font-size: 0.85em; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+        .skill-tag:hover { background-color: var(--primary-color); color: #fff; transform: translateY(-4px) scale(1.05); box-shadow: 0 5px 15px rgba(26, 188, 156, 0.4); }
+        
+        .tech-item { transition: all 0.3s; }
+        .tech-item:hover { color: #fff; text-shadow: 0 0 8px var(--glow-color); }
+        
+        .download-button-wrapper { text-align: center; padding-top: 20px; }
+        .download-button { display: inline-block; background: var(--primary-color); color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .download-button:hover { background: #fff; color: var(--secondary-color); transform: translateY(-3px); box-shadow: 0 6px 20px var(--glow-color); }
 
-        .contact-info a:hover {
-            color: #1abc9c;
-        }
+        /* --- Right Column (Main Content) --- */
+        .right-column { padding: 50px; width: 65%; opacity: 0; animation: fadeIn 1s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .competency-item strong {
-            display: block;
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        .competency-item span {
-            font-size: 0.9em;
-            color: #bdc3c7;
-        }
-
-        /* --- Right Column (Light) --- */
-        .right-column {
-            padding: 50px;
-            width: 65%;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .header h1 {
-            font-size: 3.5em;
-            color: #2c3e50;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { 
+            font-family: 'Poppins', sans-serif; 
+            font-size: 3.5em; 
+            color: var(--secondary-color); 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
             font-weight: 700;
         }
-
-        .header h2 {
-            font-size: 1.2em;
-            color: #1abc9c;
-            font-weight: 400;
-            margin-top: 5px;
-        }
+        .header h2 { font-size: 1.2em; color: var(--primary-color); font-weight: 500; margin-top: 5px; }
 
         .section-title {
-            color: #2c3e50;
-            border-bottom: 3px solid #1abc9c;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            color: var(--secondary-color); 
+            border-bottom: 3px solid var(--primary-color); 
+            padding-bottom: 10px; margin-bottom: 25px; 
+            text-transform: uppercase; letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+        }
+        section:hover > .section-title {
+             color: var(--primary-color);
+             text-shadow: 0 0 5px var(--glow-color);
+             border-color: var(--secondary-color);
         }
 
-        .job {
-            margin-bottom: 30px;
-            padding-left: 20px;
-            border-left: 3px solid #e0e0e0;
-        }
-
-        .job h4 {
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #34495e;
-        }
+        .content-card { margin-bottom: 30px; padding: 20px; border-left: 3px solid #e0e0e0; transition: all 0.4s ease; border-radius: 0 8px 8px 0; }
+        .content-card:hover { border-left: 3px solid var(--primary-color); transform: translateX(10px); box-shadow: 0 5px 25px rgba(0,0,0,0.1); }
         
-        .job-title {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .job-date {
-            font-size: 0.9em;
-            color: #7f8c8d;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-
-        .job ul {
-            list-style: none;
-        }
+        .interactive-title { font-size: 1.2em; font-weight: 600; color: var(--secondary-color); transition: color 0.3s ease; }
+        .content-card:hover .interactive-title { color: var(--primary-color); }
         
-        .job ul li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 10px;
-        }
-
-        .job ul li::before {
-            content: '\f105'; /* Font Awesome angle right icon */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 1px;
-            color: #1abc9c;
-        }
-
+        .job-date { font-size: 0.9em; color: var(--text-light-grey); font-style: italic; margin-bottom: 15px; }
+        .content-card > ul { list-style: none; padding-left: 5px; }
+        .content-card > ul > li { position: relative; padding-left: 25px; margin-bottom: 10px; }
+        .content-card > ul > li::before { content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 1px; color: var(--primary-color); }
+        
         /* --- Responsive Design --- */
         @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
-                margin: 0;
-                border-radius: 0;
-            }
-            .left-column, .right-column {
-                width: 100%;
-                padding: 30px;
-            }
+            .container { flex-direction: column; margin: 0; border-radius: 0; }
+            .left-column, .right-column { width: 100%; padding: 30px; }
         }
-
     </style>
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-
     <div class="container">
-        <!-- ===== LEFT COLUMN ===== -->
         <aside class="left-column">
-            
+            <div class="profile-section">
+                <img src="https://bit.ly/45W1F27" alt="Vikas Rawat" class="profile-pic">
+            </div>
+
             <section class="contact-info">
                 <h3>Contact</h3>
                 <ul>
-                    <li><i class="fas fa-phone"></i><a href="tel:+919911******">+91-9911******</a></li>
+                    <li><i class="fas fa-phone"></i><a href="tel:+919911958778">+91-99119-58778</a></li>
                     <li><i class="fas fa-envelope"></i><a href="mailto:vikasrawat@outlook.com">vikasrawat@outlook.com</a></li>
                     <li><i class="fas fa-map-marker-alt"></i><span>Delhi, India</span></li>
-                    <li><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/rawatvikas" target="_blank">linkedin.com/in/rawatvikas</a></li>
+                    <li><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/rawatvikas" target="_blank">/in/rawatvikas</a></li>
                 </ul>
             </section>
             
             <section>
                 <h3>Core Competencies</h3>
                 <ul>
-                    <li class="competency-item"><strong>IT Leadership & Strategy</strong> <span>Team Mentoring, Strategic Planning, Budgeting, BCP, Vendor Management</span></li>
-                    <li class="competency-item"><strong>Infrastructure & Operations</strong> <span>Server/Network/System Admin, Data Backup & Recovery</span></li>
-                    <li class="competency-item"><strong>Process Optimization</strong> <span>Automation, SOP Development, Incident Management, ITIL</span></li>
-                    <li class="competency-item"><strong>Security & Compliance</strong> <span>ISO 27001:2022, Firewall Management, Security Policies</span></li>
+                    <li class="competency-item">
+                        <strong>IT Leadership & Strategy</strong> 
+                        <div class="competency-details">
+                            <span class="skill-tag">Team Mentoring</span>
+                            <span class="skill-tag">Strategic Planning</span>
+                            <span class="skill-tag">Budgeting</span>
+                            <span class="skill-tag">BCP</span>
+                            <span class="skill-tag">Vendor Management</span>
+                        </div>
+                    </li>
+                    <li class="competency-item">
+                        <strong>Infrastructure & Operations</strong>
+                        <div class="competency-details">
+                           <span class="skill-tag">Server Admin</span>
+                           <span class="skill-tag">Network Admin</span>
+                           <span class="skill-tag">System Admin</span>
+                        </div>
+                    </li>
+                    <li class="competency-item">
+                        <strong>Process Optimization</strong>
+                        <div class="competency-details">
+                           <span class="skill-tag">Automation</span>
+                           <span class="skill-tag">SOP Development</span>
+                           <span class="skill-tag">ITIL</span>
+                        </div>
+                    </li>
+                    <li class="competency-item">
+                        <strong>Security & Compliance</strong> 
+                        <div class="competency-details">
+                           <span class="skill-tag">ISO 27001</span>
+                           <span class="skill-tag">Firewall Management</span>
+                        </div>
+                    </li>
                 </ul>
             </section>
             
             <section>
                 <h3>Technical Proficiency</h3>
                 <ul>
-                    <li><i class="fas fa-server"></i> Servers: HP ProLiant, IBM Bladecenter</li>
-                    <li><i class="fas fa-shield-alt"></i> Firewalls: SonicWall, Dell SOHO</li>
-                    <li><i class="fas fa-network-wired"></i> Routers & Switches: Cisco, HPE</li>
-                    <li><i class="fas fa-tools"></i> Software & Tools: Windows/Linux OS, HFS, KLS</li>
+                    <li class="tech-item"><i class="fas fa-server"></i> Servers: HP ProLiant, IBM</li>
+                    <li class="tech-item"><i class="fas fa-shield-alt"></i> Firewalls: SonicWall, Dell</li>
+                    <li class="tech-item"><i class="fas fa-network-wired"></i> Networking: Cisco, HPE</li>
+                    <li class="tech-item"><i class="fas fa-cogs"></i> Tools: Win/Linux OS, KLS Backup</li>
                 </ul>
-            </section>
-
-            <section>
-                <h3>Certifications</h3>
-                <ul>
-                    <li><i class="fab fa-microsoft"></i> MCSA (2012 & 2008)</li>
-                    <li><i class="fab fa-microsoft"></i> MCITP</li>
-                    <li><i class="fab fa-microsoft"></i> MCP</li>
-                </ul>
+                <div class="download-button-wrapper">
+                    <a href="http://bit.ly/3HD0hYm" class="download-button" download>
+                        <i class="fas fa-eye"></i> View CV
+                    </a>
+                </div>
             </section>
             
         </aside>
 
-        <!-- ===== RIGHT COLUMN ===== -->
         <main class="right-column">
             <header class="header">
                 <h1>Vikas Rawat</h1>
-                <h2>Strategic IT Leader & Automation Expert</h2>
+                <h2>Senior IT Professional | Managing Infrastructure</h2>
             </header>
 
             <section>
                 <h3 class="section-title">Professional Summary</h3>
-                <p>Results-driven IT Leader with over 15 years of comprehensive experience in optimizing IT infrastructure, spearheading automation, and leading high-performing technical teams. Proven ability to reduce system downtime by over <strong>20%</strong> and enhance efficiency through proactive management. Adept at ensuring business continuity and maintaining robust security compliance (ISO 27001).</p>
+                <div class="content-card">
+                    <p>Results-driven IT Professional with over 15 years of comprehensive experience in optimizing IT infrastructure and leading high-performing teams. Proven ability to reduce system downtime by over <strong>20%</strong> and slash manual intervention by <strong>30%</strong> through proactive management and automation. Adept at ensuring business continuity and maintaining robust security compliance (ISO 27001).</p>
+                </div>
             </section>
 
             <section>
                 <h3 class="section-title">Professional Experience</h3>
-                <div class="job">
-                    <h4 class="job-title">Head of IT Department</h4>
+                <div class="content-card">
+                    <div class="interactive-title">Head of IT Department</div>
                     <p class="job-date">Pan Business Lists Pvt. Ltd. | April 2016 – Present</p>
                     <ul>
-                        <li>Engineered a <strong>20% reduction</strong> in system downtime through proactive maintenance and strategic management of a complex infrastructure, including 10+ HPE Servers and enterprise-grade firewalls.</li>
-                        <li>Spearheaded automation initiatives using modern tools, slashing manual intervention by <strong>30%</strong> and enhancing overall operational efficiency.</li>
-                        <li>Led and mentored a high-performing team of 4 IT professionals, achieving a <strong>15% improvement</strong> in team productivity and service delivery metrics.</li>
-                        <li>Optimized IT support workflows and incident management protocols, resulting in a <strong>25% faster</strong> incident response time.</li>
-                        <li>Developed and implemented comprehensive IT Standard Operating Procedures (SOPs), ensuring 100% adherence to best practices and ISO 27001 compliance.</li>
+                        <li>Engineered a <strong>20% reduction</strong> in system downtime by architecting a proactive maintenance strategy.</li>
+                        <li>Spearheaded automation initiatives, slashing manual IT tasks by <strong>30%</strong>.</li>
+                        <li>Led and mentored a high-performing team of 4, achieving a <strong>15% improvement</strong> in overall team productivity.</li>
+                        <li>Optimized incident management protocols, resulting in a <strong>25% faster</strong> incident response time.</li>
                     </ul>
                 </div>
-                <div class="job">
-                     <h4 class="job-title">Network Engineer</h4>
+                <div class="content-card">
+                     <div class="interactive-title">Network Engineer</div>
                     <p class="job-date">Pan Business Lists Pvt. Ltd. | April 2009 – March 2016</p>
                     <ul>
-                         <li>Managed and maintained the company's core network infrastructure, including Cisco routers, switches, and SonicWall firewalls to ensure high availability.</li>
-                         <li>Served as the primary troubleshooter for all network connectivity issues, effectively minimizing operational disruptions for over 150 end-users.</li>
-                         <li>Implemented and enforced network security policies, including ACLs and firewall rule management, to safeguard corporate data against threats.</li>
+                         <li>Managed core network infrastructure, ensuring high availability for 150+ end-users.</li>
+                         <li>Served as the primary troubleshooter for all network connectivity issues.</li>
                     </ul>
                 </div>
             </section>
 
              <section>
-                <h3 class="section-title">Education</h3>
-                 <div class="job">
-                     <h4>Bachelor of Computer Application (BCA)</h4>
+                <h3 class="section-title">Education & Certs</h3>
+                 <div class="content-card">
+                     <h4 class="interactive-title">Bachelor of Computer Application (BCA)</h4>
                      <p class="job-date">The Global Open University (TGOU) | 2013</p>
+                     <p><strong class="interactive-title">Certifications:</strong> MCSA, MCITP, MCP</p>
                 </div>
             </section>
 
