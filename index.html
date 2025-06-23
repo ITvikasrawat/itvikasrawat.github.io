@@ -1,247 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="blue">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vikas Rawat - Senior IT Professional</title>
+    <title>Vikas Rawat - Senior IT Leader | Digital Portfolio</title>
     <style>
-        /* --- Google Font --- */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-        /* --- Global Styles & Variables --- */
-        :root {
-            --primary-color: #1abc9c;
-            --secondary-color: #2c3e50;
-            --light-bg: #f0f2f5;
-            --text-dark: #333;
-            --text-light-grey: #7f8c8d;
-            --glow-color: rgba(26, 188, 156, 0.7);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light-bg);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            background-color: #fff;
-            display: flex;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        /* --- Left Column (Sidebar) --- */
-        .left-column {
-            background-color: var(--secondary-color);
-            color: #ecf0f1;
-            padding: 40px;
-            width: 35%;
-            display: flex;
-            flex-direction: column;
-        }
-        .profile-section { text-align: center; margin-bottom: 30px; }
-        .profile-pic { width: 150px; height: 180px; border-radius: 10px; border: 4px solid var(--primary-color); object-fit: cover; box-shadow: 0 0 15px var(--glow-color); }
-        .left-column h3 { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
-        .left-column ul { list-style: none; }
-        .left-column ul li { margin-bottom: 15px; }
-        .left-column section { margin-bottom: 25px; }
-
-        .contact-info li { display: flex; align-items: center; }
-        .contact-info i { margin-right: 15px; color: var(--primary-color); width: 20px; text-align: center; font-size: 1.2em; transition: transform 0.3s ease-in-out; }
-        .contact-info li:hover i { transform: scale(1.2) translateY(-2px); }
-        .contact-info a { color: #ecf0f1; text-decoration: none; transition: all 0.3s; }
-        .contact-info a:hover {
-            color: #fff;
-            text-shadow: 0 0 8px var(--glow-color);
-        }
+        /* --- DYNAMIC THEME & COLOR PALETTE --- */
+        :root, html[data-theme="blue"] { --primary-color: #0ea5e9; --secondary-color: #0284c7; --shadow-color: rgba(14, 165, 233, 0.25); --glow-color: rgba(14, 165, 233, 0.6); }
+        html[data-theme="green"] { --primary-color: #10b981; --secondary-color: #059669; --shadow-color: rgba(16, 185, 129, 0.25); --glow-color: rgba(16, 185, 129, 0.6); }
+        html[data-theme="teal"] { --primary-color: #14b8a6; --secondary-color: #0d9488; --shadow-color: rgba(20, 184, 166, 0.25); --glow-color: rgba(20, 184, 166, 0.6); }
+        html[data-theme="purple"] { --primary-color: #8b5cf6; --secondary-color: #7c3aed; --shadow-color: rgba(139, 92, 246, 0.25); --glow-color: rgba(139, 92, 246, 0.6); }
+        html[data-theme="orange"] { --primary-color: #f97316; --secondary-color: #ea580c; --shadow-color: rgba(249, 115, 22, 0.25); --glow-color: rgba(249, 115, 22, 0.6); }
+        html[data-theme="red"] { --primary-color: #ef4444; --secondary-color: #dc2626; --shadow-color: rgba(239, 68, 68, 0.25); --glow-color: rgba(239, 68, 68, 0.6); }
+        html[data-theme="pink"] { --primary-color: #ec4899; --secondary-color: #db2777; --shadow-color: rgba(236, 72, 153, 0.25); --glow-color: rgba(236, 72, 153, 0.6); }
+        html[data-theme="yellow"] { --primary-color: #f59e0b; --secondary-color: #d97706; --shadow-color: rgba(245, 158, 11, 0.25); --glow-color: rgba(245, 158, 11, 0.6); }
+        html[data-theme="navy"] { --primary-color: #273c75; --secondary-color: #192a51; --shadow-color: rgba(39, 60, 117, 0.25); --glow-color: rgba(39, 60, 117, 0.6); }
         
-        .competency-item { margin-bottom: 25px !important; }
-        .competency-item strong { display: block; font-weight: 600; color: #ffffff; transition: all 0.3s ease; cursor: pointer; margin-bottom: 12px; }
-        .competency-item strong:hover { color: var(--primary-color); text-shadow: 0 0 10px var(--glow-color); transform: translateX(5px); }
-        .competency-details { display: flex; flex-wrap: wrap; gap: 8px; }
-        .skill-tag { display: inline-block; background-color: #34495e; color: #ecf0f1; padding: 5px 12px; border-radius: 15px; font-size: 0.85em; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
-        .skill-tag:hover { background-color: var(--primary-color); color: #fff; transform: translateY(-4px) scale(1.05); box-shadow: 0 5px 15px rgba(26, 188, 156, 0.4); }
+        :root { --bg-main-start: #f3f4f6; --bg-main-end: #e5e7eb; --glass-bg: rgba(255, 255, 255, 0.6); --glass-border: rgba(255, 255, 255, 0.8); --text-heading: #111827; --text-main: #374151; --text-subtle: #6b7280; --fab-text-color: #111827;}
+        body.dark-mode { --bg-main-start: #111827; --bg-main-end: #0c131f; --glass-bg: rgba(31, 41, 55, 0.45); --glass-border: rgba(255, 255, 255, 0.1); --text-heading: #f9fafb; --text-main: #d1d5db; --text-subtle: #9ca3af; --fab-text-color: #f9fafb;}
+        body.pitch-black-mode { --bg-main-start: #000000; --bg-main-end: #0c0c0c; --glass-bg: rgba(20, 20, 20, 0.55); --glass-border: rgba(255, 255, 255, 0.15); --text-heading: #ffffff; --text-main: #e5e5e5; --text-subtle: #a3a3a3; --fab-text-color: #ffffff;}
         
-        .tech-item { transition: all 0.3s; }
-        .tech-item:hover { color: #fff; text-shadow: 0 0 8px var(--glow-color); }
+        * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--bg-main-start); color: var(--text-main); line-height: 1.8; letter-spacing: 0.5px; transition: all 0.4s ease; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
         
-        .download-button-wrapper { text-align: center; padding-top: 20px; }
-        .download-button { display: inline-block; background: var(--primary-color); color: #fff; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .download-button:hover { background: #fff; color: var(--secondary-color); transform: translateY(-3px); box-shadow: 0 6px 20px var(--glow-color); }
-
-        /* --- Right Column (Main Content) --- */
-        .right-column { padding: 50px; width: 65%; opacity: 0; animation: fadeIn 1s ease-in-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { 
-            font-family: 'Poppins', sans-serif; 
-            font-size: 3.5em; 
-            color: var(--secondary-color); 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            font-weight: 700;
+        .hero-bg-wrapper { position: relative; border-radius: 24px; padding: 40px; overflow: hidden; }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; background-color: var(--bg-main-end);
+            background-image: linear-gradient(var(--text-subtle) 1px, transparent 1px), linear-gradient(to right, var(--text-subtle) 1px, transparent 1px);
+            background-size: 40px 40px; opacity: 0.08; animation: bg-scroll 60s linear infinite;
         }
-        .header h2 { font-size: 1.2em; color: var(--primary-color); font-weight: 500; margin-top: 5px; }
+        @keyframes bg-scroll { from { background-position: 0 0; } to { background-position: -1000px -1000px; } }
+        .hero { display: flex; align-items: center; gap: 40px; text-align: left; position: relative; z-index: 2; }
+        .hero-left { flex: 1.5; } .hero-right { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+        .hero .profile-pic { width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--primary-color); box-shadow: 0 0 40px var(--glow-color);}
+        .hero h1 { font-size: 3.5em; font-weight: 900; line-height: 1.1; background: linear-gradient(90deg, var(--primary-color), var(--text-heading) 60%, var(--primary-color)); background-size: 200% auto; color: transparent; background-clip: text; -webkit-background-clip: text; animation: text-shine 5s linear infinite; }
+        @keyframes text-shine { to { background-position: 200% center; } }
+        .hero h2 { font-size: 1.4em; font-weight: 300; color: var(--text-subtle); margin-top: 5px; white-space: nowrap; letter-spacing: 1px;}
+        .typing-container { font-size: 1.2em; font-weight: 500; color: var(--text-subtle); margin-top: 15px; height: 1.5em; }
+        .typed-text { color: var(--primary-color); }
+        .cursor { display: inline-block; width: 3px; height: 1.2em; background-color: var(--primary-color); margin-left: 5px; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .hero-stats { width: 100%; display: flex; flex-direction: column; gap: 15px; }
+        .stat-item { padding: 10px; border-radius: 12px; transition: all 0.3s ease; }
+        .stat-item:hover { transform: translateY(-5px); background: var(--glass-bg); box-shadow: 0 5px 20px var(--shadow-color); }
+        .stat-item strong { font-size: 2.2em; font-weight: 700; color: var(--primary-color); display: block; }
+        .stat-item span { color: var(--text-subtle); font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; }
+        .glass-card { background: var(--glass-bg); border-radius: 20px; padding: 40px; border: 1px solid var(--glass-border); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); transition: all 0.4s ease; }
+        .glass-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 12px 40px 0 var(--shadow-color); }
+        
+        #mode-cycle-button { background-color: var(--glass-bg); color: var(--fab-text-color) !important; }
+        body.dark-mode #mode-cycle-button, body.pitch-black-mode #mode-cycle-button { background-color: #2d3748; }
 
-        .section-title {
-            color: var(--secondary-color); 
-            border-bottom: 3px solid var(--primary-color); 
-            padding-bottom: 10px; margin-bottom: 25px; 
-            text-transform: uppercase; letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-        }
-        section:hover > .section-title {
-             color: var(--primary-color);
-             text-shadow: 0 0 5px var(--glow-color);
-             border-color: var(--secondary-color);
-        }
-
-        .content-card { margin-bottom: 30px; padding: 20px; border-left: 3px solid #e0e0e0; transition: all 0.4s ease; border-radius: 0 8px 8px 0; }
-        .content-card:hover { border-left: 3px solid var(--primary-color); transform: translateX(10px); box-shadow: 0 5px 25px rgba(0,0,0,0.1); }
+        strong { color: var(--primary-color); } .section { margin-bottom: 80px; } .section-title { font-size: 2.5em; font-weight: 700; color: var(--text-heading); margin-bottom: 30px; text-shadow: 0 0 15px var(--shadow-color); }
+        .hero-summary { font-size: 1.1em; max-width: 500px; margin: 20px 0 30px; }
+        .hero-actions { display: flex; align-items: center; gap: 20px; } .contact-links { display: flex; gap: 20px; } .contact-links a { position: relative; }
+        .contact-links a i { font-size: 1.3em; color: var(--text-subtle); transition: all 0.3s ease; } .contact-links a:hover i { color: var(--primary-color); transform: scale(1.15); }
+        .tooltip .tooltip-title { display: block; font-weight: 700; } .tooltip .tooltip-content { display: block; font-size: 0.85em; opacity: 0.8; margin-top: 2px; }
+        .color-swatch-wrapper, .contact-links a { position: relative; } .tooltip { position: absolute; bottom: 125%; left: 50%; width: max-content; max-width: 220px; transform: translateX(-50%) scale(0.8); background: #222; color: #fff; padding: 8px 14px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; text-align: center; opacity: 0; pointer-events: none; transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .contact-links a:hover .tooltip, .color-swatch-wrapper:hover .tooltip { opacity: 1; transform: translateX(-50%) scale(1); }
+        .color-swatch-wrapper .tooltip {bottom: 120%; padding: 6px 12px;}
+        .cta-button { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; }
+        .cta-button:hover { background: var(--primary-color); color: #fff; transform: translateY(-3px); box-shadow: 0 6px 25px var(--shadow-color); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; } .skill-tile:hover { transform: translateY(-5px); box-shadow: 0 10px 30px -5px var(--shadow-color); } .skill-tile:hover .skill-icon { color: var(--primary-color); transform: scale(1.1); } .skill-icon { font-size: 2.5em; color: var(--text-heading); margin-bottom: 15px; transition: all 0.3s ease;}
+        .timeline { border-left: 3px solid var(--primary-color); padding-left: 30px; position: relative;} .timeline-item { position: relative; margin-bottom: 40px; } .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item::before { content: ''; position: absolute; left: -39px; top: 5px; width: 15px; height: 15px; border-radius: 50%; background: var(--bg-main-start); border: 3px solid var(--primary-color); transition: all 0.3s ease; } .timeline-item:hover::before { transform: scale(1.3); background: var(--primary-color); }
+        .job-title { font-size: 1.8em; font-weight: 700; color: var(--text-heading); margin-bottom: 4px; } .job-meta { color: var(--text-subtle); margin-bottom: 25px; font-weight: 500; } .job-duties li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--primary-color); position: absolute; left: 0; top: 2px; font-size: 1.1em; }
+        .edu-certs-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        #theme-fab { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
+        .fab-options { position: absolute; bottom: 80px; right: 0; display: flex; flex-direction: column; align-items: stretch; gap: 15px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: bottom right; transform: translateY(10px) scale(0.8); opacity: 0; pointer-events: none; }
+        #theme-fab.active .fab-options { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
+        .fab-main { width: 60px; height: 60px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.8em; cursor: pointer; transition: all 0.3s ease; animation: pulse-glow-fab 4s infinite ease-in-out; }
+        @keyframes pulse-glow-fab { 0% { transform: scale(1); box-shadow: 0 0 20px var(--shadow-color); } 50% { transform: scale(1.05); box-shadow: 0 0 35px var(--glow-color); } 100% { transform: scale(1); box-shadow: 0 0 20px var(--shadow-color); } }
+        .fab-main:hover { animation-play-state: paused; transform: scale(1.1) rotate(20deg) !important; box-shadow: 0 10px 40px var(--glow-color); } #theme-fab.active .fab-main { transform: rotate(135deg); }
+        #mode-cycle-button, .color-switcher { backdrop-filter: blur(10px); border: 1px solid var(--glass-border); }
+        #mode-cycle-button { height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 1.1em; cursor: pointer; padding: 0 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .color-switcher { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background: var(--glass-bg); padding: 12px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .color-swatch { display: block; width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; } .color-swatch.active { border-color: var(--primary-color); }
+        #mode-text, #mode-cycle-button i { display: inline-block; transition: opacity 0.2s ease-out, transform 0.2s ease-out; }
         
-        .interactive-title { font-size: 1.2em; font-weight: 600; color: var(--secondary-color); transition: color 0.3s ease; }
-        .content-card:hover .interactive-title { color: var(--primary-color); }
-        
-        .job-date { font-size: 0.9em; color: var(--text-light-grey); font-style: italic; margin-bottom: 15px; }
-        .content-card > ul { list-style: none; padding-left: 5px; }
-        .content-card > ul > li { position: relative; padding-left: 25px; margin-bottom: 10px; }
-        .content-card > ul > li::before { content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 1px; color: var(--primary-color); }
-        
-        /* --- Responsive Design --- */
-        @media (max-width: 900px) {
-            .container { flex-direction: column; margin: 0; border-radius: 0; }
-            .left-column, .right-column { width: 100%; padding: 30px; }
-        }
+        @media (max-width: 820px) { .hero { flex-direction: column; text-align: center; } .hero-left { order: 2; } .hero-right { order: 1; } .hero-right { margin-top: 0; } .hero-stats { flex-direction: row; justify-content: center; gap: 5px; } .hero-actions { justify-content: center; } .hero-summary { margin-left: auto; margin-right: auto;} .hero h1 { font-size: 3em; } .hero h2 { white-space: normal; } }
+        @media (max-width: 480px) { .hero-actions {flex-direction: column;} }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <aside class="left-column">
-            <div class="profile-section">
-                <img src="https://bit.ly/45W1F27" alt="Vikas Rawat" class="profile-pic">
-            </div>
-
-            <section class="contact-info">
-                <h3>Contact</h3>
-                <ul>
-                    <li><i class="fas fa-phone"></i><a href="tel:+919911958778">+91-99119-58778</a></li>
-                    <li><i class="fas fa-envelope"></i><a href="mailto:vikasrawat@outlook.com">vikasrawat@outlook.com</a></li>
-                    <li><i class="fas fa-map-marker-alt"></i><span>Delhi, India</span></li>
-                    <li><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/rawatvikas" target="_blank">/in/rawatvikas</a></li>
-                </ul>
-            </section>
-            
-            <section>
-                <h3>Core Competencies</h3>
-                <ul>
-                    <li class="competency-item">
-                        <strong>IT Leadership & Strategy</strong> 
-                        <div class="competency-details">
-                            <span class="skill-tag">Team Mentoring</span>
-                            <span class="skill-tag">Strategic Planning</span>
-                            <span class="skill-tag">Budgeting</span>
-                            <span class="skill-tag">BCP</span>
-                            <span class="skill-tag">Vendor Management</span>
-                        </div>
-                    </li>
-                    <li class="competency-item">
-                        <strong>Infrastructure & Operations</strong>
-                        <div class="competency-details">
-                           <span class="skill-tag">Server Admin</span>
-                           <span class="skill-tag">Network Admin</span>
-                           <span class="skill-tag">System Admin</span>
-                        </div>
-                    </li>
-                    <li class="competency-item">
-                        <strong>Process Optimization</strong>
-                        <div class="competency-details">
-                           <span class="skill-tag">Automation</span>
-                           <span class="skill-tag">SOP Development</span>
-                           <span class="skill-tag">ITIL</span>
-                        </div>
-                    </li>
-                    <li class="competency-item">
-                        <strong>Security & Compliance</strong> 
-                        <div class="competency-details">
-                           <span class="skill-tag">ISO 27001</span>
-                           <span class="skill-tag">Firewall Management</span>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-            
-            <section>
-                <h3>Technical Proficiency</h3>
-                <ul>
-                    <li class="tech-item"><i class="fas fa-server"></i> Servers: HP ProLiant, IBM</li>
-                    <li class="tech-item"><i class="fas fa-shield-alt"></i> Firewalls: SonicWall, Dell</li>
-                    <li class="tech-item"><i class="fas fa-network-wired"></i> Networking: Cisco, HPE</li>
-                    <li class="tech-item"><i class="fas fa-cogs"></i> Tools: Win/Linux OS, KLS Backup</li>
-                </ul>
-                <div class="download-button-wrapper">
-                    <a href="http://bit.ly/3HD0hYm" class="download-button" download>
-                        <i class="fas fa-eye"></i> View CV
-                    </a>
-                </div>
-            </section>
-            
-        </aside>
-
-        <main class="right-column">
-            <header class="header">
-                <h1>Vikas Rawat</h1>
-                <h2>Senior IT Professional | Managing Infrastructure</h2>
-            </header>
-
-            <section>
-                <h3 class="section-title">Professional Summary</h3>
-                <div class="content-card">
-                    <p>Results-driven IT Professional with over 15 years of comprehensive experience in optimizing IT infrastructure and leading high-performing teams. Proven ability to reduce system downtime by over <strong>20%</strong> and slash manual intervention by <strong>30%</strong> through proactive management and automation. Adept at ensuring business continuity and maintaining robust security compliance (ISO 27001).</p>
-                </div>
-            </section>
-
-            <section>
-                <h3 class="section-title">Professional Experience</h3>
-                <div class="content-card">
-                    <div class="interactive-title">Head of IT Department</div>
-                    <p class="job-date">Pan Business Lists Pvt. Ltd. | April 2016 – Present</p>
-                    <ul>
-                        <li>Engineered a <strong>20% reduction</strong> in system downtime by architecting a proactive maintenance strategy.</li>
-                        <li>Spearheaded automation initiatives, slashing manual IT tasks by <strong>30%</strong>.</li>
-                        <li>Led and mentored a high-performing team of 4, achieving a <strong>15% improvement</strong> in overall team productivity.</li>
-                        <li>Optimized incident management protocols, resulting in a <strong>25% faster</strong> incident response time.</li>
-                    </ul>
-                </div>
-                <div class="content-card">
-                     <div class="interactive-title">Network Engineer</div>
-                    <p class="job-date">Pan Business Lists Pvt. Ltd. | April 2009 – March 2016</p>
-                    <ul>
-                         <li>Managed core network infrastructure, ensuring high availability for 150+ end-users.</li>
-                         <li>Served as the primary troubleshooter for all network connectivity issues.</li>
-                    </ul>
-                </div>
-            </section>
-
-             <section>
-                <h3 class="section-title">Education & Certs</h3>
-                 <div class="content-card">
-                     <h4 class="interactive-title">Bachelor of Computer Application (BCA)</h4>
-                     <p class="job-date">The Global Open University (TGOU) | 2013</p>
-                     <p><strong class="interactive-title">Certifications:</strong> MCSA, MCITP, MCP</p>
-                </div>
-            </section>
-
+        <header class="hero-bg-wrapper">
+            <div class="hero-bg"></div>
+            <div class="hero"><div class="hero-left"><h1>Vikas Rawat</h1><h2>Senior IT Professional | Managing Infrastructure</h2><div class="typing-container">I specialize in <span class="typed-text"></span><span class="cursor"></span></div><p class="hero-summary">A strategic IT professional transforming complex infrastructures into streamlined, high-performance environments through leadership and automation.</p><div class="hero-actions"><a href="http://bit.ly/3HD0hYm" class="cta-button" download><i class="fas fa-file-arrow-down"></i> Download CV</a><div class="contact-links"><a href="mailto:vikasrawat@outlook.com"><i class="fas fa-envelope"></i><span class="tooltip"><span class="tooltip-title">Email</span><span class="tooltip-content">vikasrawat@outlook.com</span></span></a><a href="tel:+919911958778"><i class="fas fa-phone"></i><span class="tooltip"><span class="tooltip-title">Phone</span><span class="tooltip-content">+91-99119-58778</span></span></a><a href="https://linkedin.com/in/rawatvikas" target="_blank"><i class="fab fa-linkedin"></i><span class="tooltip"><span class="tooltip-title">LinkedIn</span><span class="tooltip-content">/in/rawatvikas</span></span></a><a href="https://itvikasrawat.github.io/" target="_blank"><i class="fab fa-github"></i><span class="tooltip"><span class="tooltip-title">Portfolio</span><span class="tooltip-content">itvikasrawat.github.io</span></span></a></div></div></div><div class="hero-right"><img src="https://bit.ly/45W1F27" alt="Vikas Rawat" class="profile-pic"><div class="hero-stats"><div class="stat-item"><strong class="stat-number" data-target="20">>0%</strong><span>Downtime Reduction</span></div><div class="stat-item"><strong class="stat-number" data-target="30">>0%</strong><span>Automation Boost</span></div><div class="stat-item"><strong class="stat-number" data-target="15">0+</strong><span>Years Experience</span></div></div></div></div>
+        </header>
+        <main>
+             <section id="experience"><h2 class="section-title">Professional Experience</h2><div class="timeline"><div class="timeline-item"><div class="glass-card"><h3 class="job-title">Head of IT Department</h3><p class="job-meta">Pan Business Lists Pvt. Ltd. | April 2016 – Present</p><ul class="job-duties"><li>Engineered a <strong>20% reduction</strong> in system downtime through proactive management of 10+ HPE Servers.</li><li>Slashed manual intervention by <strong>30%</strong> by spearheading automation initiatives.</li><li>Achieved a <strong>15% improvement</strong> in team productivity by mentoring a team of 4 professionals.</li></ul></div></div><div class="timeline-item"><div class="glass-card"><h3 class="job-title">Network Engineer</h3><p class="job-meta">Pan Business Lists Pvt. Ltd. | April 2009 – March 2016</p><ul class="job-duties"><li>Managed core network infrastructure, ensuring high availability for over <strong>150 end-users</strong>.</li><li>Served as the primary troubleshooter for all network, server, and system-level issues.</li><li>Implemented security policies, including ACLs and firewall rules, to safeguard corporate data.</li></ul></div></div></div></section>
+            <section id="skills"><h2 class="section-title">Core Competencies</h2><div class="skills-grid"><div class="skill-tile glass-card"><i class="fas fa-sitemap skill-icon"></i><h3 class="skill-title">Leadership & Strategy</h3><p class="skill-details">Team Mentoring, Strategic Planning, Budgeting, Vendor Management.</p></div><div class="skill-tile glass-card"><i class="fas fa-cogs skill-icon"></i><h3 class="skill-title">Infrastructure & Ops</h3><p class="skill-details">Server/Network Admin, Data Backup, Disaster Recovery, SOPs.</p></div><div class="skill-tile glass-card"><i class="fas fa-shield-alt skill-icon"></i><h3 class="skill-title">Security & Compliance</h3><p class="skill-details">ISO 27001:2022, Firewall Mgmt, InfoSec Policies, ITIL Framework.</p></div></div></section>
+            <section id="education"><h2 class="section-title">Education & Certifications</h2><div class="skills-grid"><div class="skill-tile glass-card"><i class="fas fa-graduation-cap skill-icon"></i><h3 class="skill-title">Bachelor of Computer Applications</h3><p class="skill-details">The Global Open University (TGOU), 2013</p></div><div class="skill-tile glass-card"><i class="fas fa-award skill-icon"></i><h3 class="skill-title">MCSA (2012 & 2008)</h3><p class="skill-details">Microsoft Certified Solutions Associate</p></div><div class="skill-tile glass-card"><i class="fas fa-award skill-icon"></i><h3 class="skill-title">MCITP & MCP</h3><p class="skill-details">Microsoft Certified IT Professional & Professional</p></div></div></section>
         </main>
     </div>
+    <div id="theme-fab"><div class="fab-options"><div class="color-switcher"><div class="color-swatch-wrapper"><span class="color-swatch active" data-color="blue" style="background:#0ea5e9"></span><span class="tooltip">Blue</span></div><div class="color-swatch-wrapper"><span class="color-swatch" data-color="green" style="background:#10b981"></span><span class="tooltip">Green</span></div><div class="color-swatch-wrapper"><span class="color-swatch" data-color="teal" style="background:#14b8a6"></span><span class="tooltip">Teal</span></div><div class="color-swatch-wrapper"><span class="color-swatch" data-color="purple" style="background:#8b5cf6"></span><span class="tooltip">Purple</span></div><div class="color-swatch-wrapper"><span class="color-swatch" data-color="orange" style="background:#f97316"></span><span class="tooltip">Orange</span></div><div class="color-swatch-wrapper"><span class="color-swatch" data-color="red" style="background:#ef4444"></span><span class="tooltip">Red</span></div><div class="color-swatch-wrapper"><span class="color-swatch" data-color="pink" style="background:#ec4899"></span><span class="tooltip">Pink</span></div><div class="color-swatch-wrapper"><span class="color-swatch" data-color="yellow" style="background:#f59e0b"></span><span class="tooltip">Yellow</span></div><div class="color-swatch-wrapper"><span class="color-swatch" data-color="navy" style="background:#273c75"></span><span class="tooltip">Navy</span></div></div><button id="mode-cycle-button" title="Cycle Theme Mode"><i class="fas fa-sun"></i><span id="mode-text">Light</span></button></div><div class="fab-main"><i class="fas fa-palette"></i></div></div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // --- The complete, bug-free script ---
+    const themeModes = ['light', 'dark', 'pitch-black'];
+    const modeCycleBtn = document.getElementById('mode-cycle-button');
+    const colorSwatches = document.querySelectorAll('.color-swatch');
+    const body = document.body;
+    const html = document.documentElement;
+    const modeIcon = modeCycleBtn.querySelector('i');
+    const modeText = document.getElementById('mode-text');
 
+    const applyTheme = (mode, color) => {
+        modeIcon.style.opacity = '0'; modeText.style.opacity = '0';
+        setTimeout(() => {
+            body.className = ''; 
+            if (mode === 'dark') body.classList.add('dark-mode');
+            if (mode === 'pitch-black') body.classList.add('pitch-black-mode');
+
+            if(mode === 'light') { modeIcon.className = 'fas fa-sun'; modeText.textContent = 'Light'; }
+            else if(mode === 'dark') { modeIcon.className = 'fas fa-moon'; modeText.textContent = 'Dark'; }
+            else { modeIcon.className = 'fas fa-star'; modeText.textContent = 'Cosmic'; }
+            
+            modeIcon.style.opacity = '1'; modeText.style.opacity = '1';
+            html.dataset.theme = color;
+            colorSwatches.forEach(swatch => { swatch.classList.toggle('active', swatch.dataset.color === color); });
+        }, 200);
+    };
+
+    let currentMode = localStorage.getItem('themeMode') || 'light';
+    let currentColor = localStorage.getItem('themeColor') || 'blue';
+    applyTheme(currentMode, currentColor);
+
+    modeCycleBtn.addEventListener('click', (e) => { e.stopPropagation(); currentMode = themeModes[(themeModes.indexOf(currentMode) + 1) % themeModes.length]; localStorage.setItem('themeMode', currentMode); applyTheme(currentMode, currentColor); });
+    colorSwatches.forEach(swatch => swatch.addEventListener('click', (e) => { e.stopPropagation(); currentColor = swatch.dataset.color; localStorage.setItem('themeColor', currentColor); applyTheme(currentMode, currentColor); }));
+    
+    const fabContainer = document.getElementById('theme-fab');
+    fabContainer.addEventListener('click', (e) => { if (e.target.closest('.fab-main')) fabContainer.classList.toggle('active'); });
+    document.addEventListener('click', (e) => { if (!fabContainer.contains(e.target)) fabContainer.classList.remove('active'); });
+    
+    function animateSingleCounter(el) {
+        const target = +el.getAttribute('data-target');
+        const duration = 1500; const pauseDuration = 4000;
+        const prefix = el.innerText.includes('>') ? '>' : '';
+        const suffix = el.innerText.includes('+') ? '+' : '%';
+
+        function runAnimation() {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = timestamp - startTimestamp;
+                const current = Math.min(Math.floor(progress / duration * target), target);
+                if (suffix === '+') { el.innerText = `${current}${suffix}`; } 
+                else { el.innerText = `${prefix}${current}${suffix}`; }
+                if (current < target) { window.requestAnimationFrame(step); } 
+                else { el.innerText = `${prefix}${target}${suffix}`; setTimeout(() => { setTimeout(runAnimation, 500); }, pauseDuration); }
+            };
+            window.requestAnimationFrame(step);
+        }
+        runAnimation();
+    }
+    document.querySelectorAll('.stat-number').forEach(animateSingleCounter);
+    
+    const typingTextElement = document.querySelector('.typed-text');
+    const phrases = ["Architecting Scalable Servers.", "Automating IT Processes.", "Ensuring ISO 27001 Compliance."];
+    let phraseIndex = 0; let charIndex = 0; let isDeleting = false;
+    function type() {
+        if (!typingTextElement) return;
+        const currentPhrase = phrases[phraseIndex];
+        let typeSpeed = 100;
+        if (isDeleting) { typeSpeed = 50; typingTextElement.textContent = currentPhrase.substring(0, charIndex - 1); charIndex--; }
+        else { typingTextElement.textContent = currentPhrase.substring(0, charIndex + 1); charIndex++; }
+        if (!isDeleting && charIndex === currentPhrase.length) { typeSpeed = 2000; isDeleting = true; } 
+        else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typeSpeed = 500; }
+        setTimeout(type, typeSpeed);
+    }
+    type();
+});
+</script>
 </body>
 </html>
