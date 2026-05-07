@@ -155,17 +155,19 @@
 
         /* ... (top-right-group class aise hi rahne dein) ... */
 
+        /* Updated Poster Manifesto CSS */
         .poster-manifesto {
             background-color: var(--orange);
-            color: #fff; /* ब्लैक टेक्स्ट की जगह वाइट टेक्स्ट */
-            font-family: 'Anton', sans-serif;
-            font-size: 2.2rem;
+            color: #fff; 
+            font-family: 'Permanent Marker', cursive; /* Anton hataya taki clear dikhe */
+            font-size: 1.7rem; /* Font size thoda adjust kiya */
             padding: 15px 20px;
-            line-height: 1;
+            line-height: 1.25; /* Lines ke beech thodi space di */
             transform: rotate(3deg);
-            box-shadow: -6px 6px 0px var(--dark-blue); /* ब्लैक की जगह ब्लू शैडो */
+            box-shadow: -6px 6px 0px var(--dark-blue); 
             text-align: right;
-            border: 3px solid var(--dark-blue); /* ब्लैक की जगह ब्लू बॉर्डर */
+            border: 2px solid var(--dark-blue); 
+            letter-spacing: 1px;
         }
 
         .poster-stamp {
@@ -429,6 +431,150 @@
             .lower-grid { grid-template-columns: 1fr; }
             .bottom-banner { flex-direction: column; padding-top: 3rem; clip-path: none; border-top: 5px solid var(--orange);}
         }
+		
+		/* --- SECRET PHONE BLUR (MOBILE FIXED) --- */
+        .blurred-text {
+            color: #111 !important;
+            filter: blur(3.5px) !important; /* Blur kam kiya taaki number ka aakar dikhe */
+            cursor: pointer;
+            user-select: none; /* Text copy hone se rokne ke liye */
+            transition: filter 0.3s ease;
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .blurred-text:hover {
+            filter: blur(4px) !important;
+        }
+        .revealed-text {
+            filter: blur(0px) !important; /* Blur puri tarah hatao */
+            color: #111 !important;
+            cursor: pointer;
+            border-bottom: 1px dashed #ccc !important;
+            transition: filter 0.5s ease;
+        }
+
+        /* --- COMIC POPUP DESIGN --- */
+        .comic-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(3px);
+        }
+        .comic-modal {
+            background: var(--note); 
+            border: 4px solid #111;
+            padding: 40px 30px 30px;
+            max-width: 420px;
+            width: 95%;
+            border-radius: 0px; /* Sharp poster look */
+            box-shadow: 15px 15px 0px var(--dark-blue);
+            position: relative;
+            text-align: center;
+            transform: rotate(-0.5deg);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        /* Badge Style for Header */
+        .comic-header-badge {
+            background: #111;
+            color: #fff;
+            display: inline-block;
+            padding: 8px 20px;
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            text-transform: uppercase;
+            transform: rotate(-2deg);
+            margin-bottom: 20px;
+            box-shadow: 4px 4px 0px var(--orange);
+        }
+
+        .comic-modal p {
+            font-family: 'Architects Daughter', cursive;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .comic-modal input {
+            width: 100%;
+            padding: 12px;
+            border: 3px solid #111;
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            outline: none;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+            100% { transform: scale(1) rotate(-1deg); opacity: 1; }
+        }
+        .comic-modal h2 {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--orange);
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 0px #fff;
+        }
+        
+        .comic-modal .question-box {
+            background: #fff;
+            border: 2px dashed var(--dark-blue);
+            padding: 10px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .comic-modal input:focus {
+            border-color: var(--orange);
+        }
+        .comic-modal button {
+            background: var(--orange);
+            color: #fff;
+            border: 3px solid #111;
+            padding: 10px 25px;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px #111;
+            transition: all 0.1s;
+            letter-spacing: 1px;
+        }
+        .comic-modal button:active {
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0px #111;
+        }
+        .comic-modal .close-btn {
+            position: absolute;
+            top: -15px; right: -15px;
+            background: #111;
+            color: #fff;
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-weight: bold; cursor: pointer;
+            border: 3px solid #fff;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            font-family: Arial, sans-serif;
+        }
+        .error-msg {
+            color: #d32f2f;
+            display: none;
+            margin-top: 10px;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1rem !important;
+        }
+		
+		
     </style>
 </head>
 <body>
@@ -455,12 +601,14 @@
             <span class="last">RAWAT</span>
         </div>
 
+        <!-- Updated Top Right Group -->
         <div class="top-right-group">
             <div class="poster-manifesto interactive">
                 LEAD.<br>INNOVATE.<br>SECURE.<br>DELIVER.
             </div>
             <div class="poster-stamp interactive">
-                <i class="fas fa-certificate"></i> ISO 27001:2022 CERTIFIED
+                <!-- Certificate icon hata kar Shield icon lagaya aur text change kiya -->
+                <i class="fas fa-shield-alt"></i> ISO 27001:2022 COMPLIANCE
             </div>
         </div>
 
@@ -478,7 +626,7 @@
                 <h3 style="background: #111;">📞 GET IN TOUCH</h3>
                 <ul class="contact-list">
                     <li><i class="fas fa-map-marker-alt"></i> Delhi, India</li>
-                    <li><i class="fas fa-phone-alt"></i> <a href="tel:+919911958778">+91-99119-58778</a></li>
+                    <li><i class="fas fa-phone-alt"></i> <a id="secret-phone" href="javascript:void(0);" class="blurred-text" onclick="showSecurityPopup()">+91-99119-58778</a></li>
                     <li><i class="fas fa-envelope"></i> <a href="mailto:vikasrawat@outlook.com">vikasrawat@outlook.com</a></li>
                     <li><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/rawatvikas" target="_blank">linkedin.com/in/rawatvikas</a></li>
                     <li><i class="fab fa-github"></i> <a href="https://itvikasrawat.github.io" target="_blank">itvikasrawat.github.io</a></li>
@@ -531,7 +679,7 @@
                 
                 <span style="font-family: 'Anton', sans-serif; font-size: 1.2rem; color: var(--orange); letter-spacing: 1px;">CORE IT IMPACT</span><br>
                 <div style="margin-top: 10px; line-height: 1.4;">
-                    <i class="fas fa-users" style="color: var(--dark-blue);"></i> Ensuring zero downtime for <strong style="font-size: 1.25rem; color: var(--dark-blue);">150+ Users</strong>.<br>
+                    <i class="fas fa-users" style="color: var(--dark-blue);"></i> Ensuring zero downtime for <strong style="font-size: 1.25rem; color: var(--dark-blue);">100+ Users</strong>.<br>
                     <div style="margin-top: 8px;">
                         <i class="fas fa-shield-alt" style="color: #4a804d;"></i> <strong style="font-size: 1.2rem; color: #4a804d;">100%</strong> ISO 27001 Compliance maintained.
                     </div>
@@ -563,7 +711,7 @@
                 <div class="job-title" style="margin-top: 15px;">NETWORK ENGINEER <span style="font-family: Arial; font-size: 0.8rem; color: #555;">(APR 2009 – MAR 2016)</span></div>
                 <ul>
                     <li>Managed core network infrastructure using Cisco routers & SonicWall.</li>
-                    <li>Troubleshot issues for 150+ end-users, ensuring minimal downtime.</li>
+                    <li>Troubleshot issues for 100+ end-users, ensuring minimal downtime.</li>
                     <li>Implemented security policies (ACLs, Firewalls) to protect corporate data.</li>
                 </ul>
             </div>
@@ -572,119 +720,146 @@
     </div>
 
     <!-- Lower Section -->
-    <div class="lower-grid">
+    <div class="lower-grid" style="align-items: stretch;">
         
-        <!-- Structured & Colorful Technical Proficiency Box -->
-        <div class="torn-card tech-box interactive" style="background-color: #fcfbfa; border: 3px solid var(--dark-blue); box-shadow: 6px 6px 0px rgba(11, 52, 105, 0.15);">
-            <div class="tape t-top-left"></div>
+        <!-- 1. TECHNICAL PROFICIENCY (Redesigned with badges) -->
+        <div class="torn-card interactive" style="background-color: #fcfbfa; border: 3px solid var(--dark-blue); box-shadow: 6px 6px 0px rgba(11, 52, 105, 0.15); height: 100%; display: flex; flex-direction: column; padding: 1.2rem;">
             
-            <h3 style="background: var(--orange); color: white; display: inline-block; padding: 5px 15px; font-family: 'Permanent Marker', cursive; margin-top: -30px; margin-left: -20px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); transform: rotate(-2deg); font-size: 1.2rem;">
+            <h3 style="background: var(--orange); color: white; display: inline-block; padding: 5px 15px; font-family: 'Permanent Marker', cursive; margin-top: -30px; margin-left: -25px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); transform: rotate(-2deg); font-size: 1.2rem; align-self: flex-start; z-index: 2; position: relative;">
                 ⚙️ TECHNICAL PROFICIENCY
             </h3>
             
-            <div style="margin-top: 25px; display: flex; flex-direction: column; gap: 18px;">
-                
+            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 12px;">
                 <!-- Servers -->
                 <div>
-                    <span style="background: var(--dark-blue); color: white; padding: 4px 10px; font-family: 'Permanent Marker', cursive; font-size: 0.9rem; border-radius: 3px; box-shadow: 2px 2px 0px rgba(0,0,0,0.2);">
+                    <span style="background: var(--dark-blue); color: white; padding: 3px 8px; font-family: 'Permanent Marker', cursive; font-size: 0.85rem; border-radius: 3px; box-shadow: 1px 1px 0px rgba(0,0,0,0.2); display: inline-block; transform: rotate(-1deg);">
                         <i class="fas fa-server"></i> SERVERS
                     </span>
-                    <p style="margin-top: 10px; font-family: 'Architects Daughter', cursive; font-size: 1.05rem; padding-left: 12px; border-left: 3px solid var(--dark-blue); color: #222; line-height: 1.4;">
+                    <p style="margin-top: 6px; font-family: 'Architects Daughter', cursive; font-size: 0.95rem; padding-left: 10px; border-left: 3px solid var(--dark-blue); color: #222; line-height: 1.3;">
                         HP ProLiant (DL380 Gen10, DL360, ML370, DL140), IBM Bladecenter E (8677)
                     </p>
                 </div>
 
                 <!-- Firewalls -->
                 <div>
-                    <span style="background: #4a804d; color: white; padding: 4px 10px; font-family: 'Permanent Marker', cursive; font-size: 0.9rem; border-radius: 3px; box-shadow: 2px 2px 0px rgba(0,0,0,0.2);">
+                    <span style="background: #4a804d; color: white; padding: 3px 8px; font-family: 'Permanent Marker', cursive; font-size: 0.85rem; border-radius: 3px; box-shadow: 1px 1px 0px rgba(0,0,0,0.2); display: inline-block; transform: rotate(1deg);">
                         <i class="fas fa-shield-virus"></i> FIREWALLS
                     </span>
-                    <p style="margin-top: 10px; font-family: 'Architects Daughter', cursive; font-size: 1.05rem; padding-left: 12px; border-left: 3px solid #4a804d; color: #222; line-height: 1.4;">
+                    <p style="margin-top: 6px; font-family: 'Architects Daughter', cursive; font-size: 0.95rem; padding-left: 10px; border-left: 3px solid #4a804d; color: #222; line-height: 1.3;">
                         SonicWall (TZ400, TZ300, TZ270, NS220, NSA240), Dell SOHO
                     </p>
                 </div>
 
                 <!-- Routers & Switches -->
                 <div>
-                    <span style="background: var(--orange); color: white; padding: 4px 10px; font-family: 'Permanent Marker', cursive; font-size: 0.9rem; border-radius: 3px; box-shadow: 2px 2px 0px rgba(0,0,0,0.2);">
+                    <span style="background: var(--orange); color: white; padding: 3px 8px; font-family: 'Permanent Marker', cursive; font-size: 0.85rem; border-radius: 3px; box-shadow: 1px 1px 0px rgba(0,0,0,0.2); display: inline-block; transform: rotate(-1deg);">
                         <i class="fas fa-network-wired"></i> ROUTERS / SWITCHES
                     </span>
-                    <p style="margin-top: 10px; font-family: 'Architects Daughter', cursive; font-size: 1.05rem; padding-left: 12px; border-left: 3px solid var(--orange); color: #222; line-height: 1.4;">
+                    <p style="margin-top: 6px; font-family: 'Architects Daughter', cursive; font-size: 0.95rem; padding-left: 10px; border-left: 3px solid var(--orange); color: #222; line-height: 1.3;">
                         Cisco (1600, 1800, Catalyst 2960), TP-Link ER605, HPE ProCurve 1800, Linksys SR224G
                     </p>
                 </div>
 
                 <!-- Software -->
                 <div>
-                    <span style="background: #8b5cf6; color: white; padding: 4px 10px; font-family: 'Permanent Marker', cursive; font-size: 0.9rem; border-radius: 3px; box-shadow: 2px 2px 0px rgba(0,0,0,0.2);">
-                        <i class="fab fa-windows"></i> SOFTWARE & TOOLS
+                    <span style="background: #8b5cf6; color: white; padding: 3px 8px; font-family: 'Permanent Marker', cursive; font-size: 0.85rem; border-radius: 3px; box-shadow: 1px 1px 0px rgba(0,0,0,0.2); display: inline-block; transform: rotate(1deg);">
+                        <i class="fab fa-windows"></i> SOFTWARE + TOOLS
                     </span>
-                    <p style="margin-top: 10px; font-family: 'Architects Daughter', cursive; font-size: 1.05rem; padding-left: 12px; border-left: 3px solid #8b5cf6; color: #222; line-height: 1.4;">
+                    <p style="margin-top: 6px; font-family: 'Architects Daughter', cursive; font-size: 0.95rem; padding-left: 10px; border-left: 3px solid #8b5cf6; color: #222; line-height: 1.3;">
                         Windows Server, Linux OS, HFS Server, KLS Backup, ccProxy, FolderSizes, EMCO Tools
                     </p>
                 </div>
-
             </div>
         </div>
 
-        <!-- 1. EDUCATION BOX: Vintage Stitched Diary Style -->
-        <div class="torn-card edu-box interactive" style="background-color: #a8b884; border: 3px solid #4a5d23; border-radius: 8px 25px 8px 25px; box-shadow: 6px 6px 0px #4a5d23, 10px 10px 15px rgba(0,0,0,0.15); padding: 0;">
-            <div style="border: 2px dashed #4a5d23; margin: 10px; padding: 15px; border-radius: 5px 20px 5px 20px; background-color: rgba(255,255,255,0.15); position: relative;">
+        <!-- 2. EDUCATION BOX (Adjusted for perfect height fit) -->
+        <div class="torn-card interactive" style="background-color: #a8b884; border: 3px solid #4a5d23; border-radius: 8px 25px 8px 25px; box-shadow: 6px 6px 0px #4a5d23, 10px 10px 15px rgba(0,0,0,0.15); padding: 0; height: 100%; display: flex; flex-direction: column;">
+            <div style="border: 2px dashed #4a5d23; margin: 10px; padding: 12px; border-radius: 5px 20px 5px 20px; background-color: rgba(255,255,255,0.15); flex-grow: 1; display: flex; flex-direction: column;">
                 
-                <h3 style="font-family: 'Permanent Marker', cursive; font-size: 1.4rem; border-bottom: 2px solid #4a5d23; padding-bottom: 5px; color: #111;">
+                <h3 style="font-family: 'Permanent Marker', cursive; font-size: 1.3rem; border-bottom: 2px solid #4a5d23; padding-bottom: 3px; color: #111;">
                     <i class="fas fa-graduation-cap" style="color: var(--dark-blue);"></i> EDUCATION
                 </h3>
                 
-                <div style="background: rgba(255,255,255,0.5); padding: 10px; border-radius: 5px; margin-top: 15px; box-shadow: inset 1px 1px 4px rgba(0,0,0,0.1); border-left: 4px solid var(--dark-blue);">
-                    <p style="font-family: 'Architects Daughter', cursive; font-weight: 700; color: #111;">BACHELOR OF COMPUTER APPLICATION (BCA)</p>
-                    <p style="font-family: 'Architects Daughter', cursive; font-size: 0.95rem; color: #333; margin-top: 5px;">The Global Open University (TGOU) | <span style="background: #111; color: #fff; padding: 2px 6px; border-radius: 3px; font-family: 'Anton', sans-serif; letter-spacing: 1px;">2013</span></p>
+                <div style="background: rgba(255,255,255,0.5); padding: 10px; border-radius: 5px; margin-top: 10px; box-shadow: inset 1px 1px 4px rgba(0,0,0,0.1); border-left: 4px solid var(--dark-blue);">
+                    <p style="font-family: 'Architects Daughter', cursive; font-weight: 700; color: #111; font-size: 0.9rem;">BACHELOR OF COMPUTER APPLICATION (BCA)</p>
+                    <p style="font-family: 'Architects Daughter', cursive; font-size: 0.85rem; color: #333; margin-top: 5px;">The Global Open University (TGOU) | <span style="background: #111; color: #fff; padding: 2px 6px; border-radius: 3px; font-family: 'Anton', sans-serif; letter-spacing: 1px;">2013</span></p>
                 </div>
                 
-                <h3 style="font-family: 'Permanent Marker', cursive; font-size: 1.4rem; border-bottom: 2px solid #4a5d23; padding-bottom: 5px; margin-top: 25px; color: #111;">
+                <h3 style="font-family: 'Permanent Marker', cursive; font-size: 1.3rem; border-bottom: 2px solid #4a5d23; padding-bottom: 3px; margin-top: 15px; color: #111;">
                     <i class="fas fa-certificate" style="color: var(--orange);"></i> CERTIFICATIONS
                 </h3>
                 
-                <ul class="cert-list" style="font-family: 'Architects Daughter', cursive; background: rgba(255,255,255,0.5); padding: 12px 10px 12px 25px; border-radius: 5px; margin-top: 15px; box-shadow: inset 1px 1px 4px rgba(0,0,0,0.1); border-left: 4px solid var(--orange);">
-                    <li>Microsoft Certified Solutions Associate (MCSA) - 2012 & 2008</li>
-                    <li>Microsoft Certified IT Professional (MCITP)</li>
+                <ul class="cert-list" style="font-family: 'Architects Daughter', cursive; background: rgba(255,255,255,0.5); padding: 10px 10px 10px 25px; border-radius: 5px; margin-top: 10px; box-shadow: inset 1px 1px 4px rgba(0,0,0,0.1); border-left: 4px solid var(--orange); flex-grow: 1; font-size: 0.9rem;">
+                    <li style="margin-bottom: 8px;">Microsoft Certified Solutions Associate (MCSA) - 2012 & 2008</li>
+                    <li style="margin-bottom: 8px;">Microsoft Certified IT Professional (MCITP)</li>
                     <li>Microsoft Certified Professional (MCP)</li>
                 </ul>
             </div>
         </div>
 
-        <!-- 2. TOOLS & APPROACH BOX: Blueprint / Clipboard Style -->
-        <div class="torn-card tools-box interactive" style="background-color: #dbeaf0; background-image: linear-gradient(#b3d4e0 1px, transparent 1px), linear-gradient(90deg, #b3d4e0 1px, transparent 1px); background-size: 20px 20px; border: 3px solid var(--dark-blue); box-shadow: -6px 6px 0px var(--dark-blue); border-radius: 5px; padding-top: 2.5rem; position: relative;">
+       <!-- 3. TOOLS & ACHIEVEMENTS BOX (Redesigned with colorful achievement cards) -->
+        <div class="torn-card interactive" style="background-color: #e2ecf1; border: 3px solid var(--dark-blue); box-shadow: -6px 6px 0px var(--dark-blue); border-radius: 8px; padding: 0; padding-bottom: 15px; position: relative; height: 100%; display: flex; flex-direction: column; z-index: 1;">
             
-            <!-- Clipboard clip at top -->
-            <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 25px; background: #ccc; border: 3px solid #333; border-radius: 10px 10px 0 0; box-shadow: inset 0 5px 5px rgba(255,255,255,0.7), 0 3px 5px rgba(0,0,0,0.3); z-index: 5;">
-                <div style="width: 40px; height: 8px; background: #333; margin: 5px auto; border-radius: 10px;"></div>
+            <!-- Metallic Clip -->
+            <div style="position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 70px; height: 22px; background: linear-gradient(to bottom, #f0f0f0, #999); border: 3px solid #222; border-radius: 10px 10px 0 0; box-shadow: inset 0 2px 5px rgba(255,255,255,0.9), 0 4px 5px rgba(0,0,0,0.3); z-index: 10;">
+                <div style="width: 35px; height: 6px; background: #222; margin: 4px auto; border-radius: 10px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);"></div>
             </div>
 
-            <h3 style="background: var(--dark-blue); color: white; display: block; text-align: center; padding: 8px 15px; font-family: 'Permanent Marker', cursive; font-size: 1.1rem; margin: -10px -1.5rem 20px -1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.2); border-top: 3px solid #111; border-bottom: 3px solid #111; transform: rotate(-1deg);">
+            <div style="background: var(--dark-blue); color: white; text-align: center; padding: 8px 15px; font-family: 'Permanent Marker', cursive; font-size: 1.05rem; margin-top: 25px; margin-left: -10px; margin-right: -10px; box-shadow: 0 5px 8px rgba(0,0,0,0.25); border-top: 3px solid #111; border-bottom: 3px solid #111; transform: rotate(-1deg);">
                 WHAT I WORK WITH EVERY DAY
-            </h3>
+            </div>
             
-            <div class="icon-grid" style="background: rgba(255,255,255,0.85); padding: 15px; border-radius: 10px; border: 2px dashed var(--dark-blue); box-shadow: 2px 2px 0 rgba(11,52,105,0.2);">
-                <div><i class="fab fa-windows"></i><br>WINDOWS<br>SERVER</div>
-                <div><i class="fas fa-shield-virus"></i><br>SONICWALL<br>FIREWALL</div>
-                <div><i class="fas fa-network-wired"></i><br>CISCO<br>SWITCHES</div>
-                <div><i class="fas fa-server" style="color: var(--orange);"></i><br>HPE<br>SERVERS</div>
+            <!-- Dashed Container for Icons (Sirf 3 Icons ab) -->
+            <div style="background: #ffffff; border: 2px dashed var(--dark-blue); border-radius: 12px; margin: 15px 12px 15px 12px; padding: 12px;">
+                <div style="display: flex; gap: 10px; justify-content: space-between;">
+                    <div style="background: #f0f8ff; border-bottom: 3px solid #0284c7; flex: 1; text-align: center; padding: 8px 2px; border-radius: 6px;">
+                        <i class="fab fa-windows" style="font-size: 1.8rem; color: #0284c7; margin-bottom: 6px;"></i><br>
+                        <span style="font-family: 'Permanent Marker', cursive; font-size: 0.7rem; color: #111; line-height: 1.1; display: inline-block;">WINDOWS<br>SERVER</span>
+                    </div>
+                    <div style="background: #fff1f2; border-bottom: 3px solid #e11d48; flex: 1; text-align: center; padding: 8px 2px; border-radius: 6px;">
+                        <i class="fas fa-shield-virus" style="font-size: 1.8rem; color: #e11d48; margin-bottom: 6px;"></i><br>
+                        <span style="font-family: 'Permanent Marker', cursive; font-size: 0.7rem; color: #111; line-height: 1.1; display: inline-block;">SONICWALL<br>FIREWALL</span>
+                    </div>
+                    <div style="background: #f5f3ff; border-bottom: 3px solid #7c3aed; flex: 1; text-align: center; padding: 8px 2px; border-radius: 6px;">
+                        <i class="fas fa-network-wired" style="font-size: 1.8rem; color: #7c3aed; margin-bottom: 6px;"></i><br>
+                        <span style="font-family: 'Permanent Marker', cursive; font-size: 0.7rem; color: #111; line-height: 1.1; display: inline-block;">CISCO<br>SWITCHES</span>
+                    </div>
+                </div>
             </div>
 
-            <h3 style="font-family: 'Permanent Marker', cursive; font-size: 1.3rem; color: var(--orange); margin-top: 25px; text-shadow: 1px 1px 0px #fff; border-bottom: 2px solid var(--orange); display: inline-block;">
-                <i class="fas fa-tasks"></i> MY APPROACH
-            </h3>
+            <!-- KEY ACHIEVEMENTS Section (Colorful Individual Cards) -->
+            <div style="margin-top: auto; padding: 0 12px;">
+                <h3 style="font-family: 'Permanent Marker', cursive; font-size: 1.15rem; color: var(--orange); text-shadow: 1px 1px 0px #fff; border-bottom: 2px solid var(--orange); display: inline-block; padding-bottom: 3px; margin-bottom: 12px;">
+                    <i class="fas fa-trophy"></i> KEY ACHIEVEMENTS
+                </h3>
+                
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <!-- Achievement 1 -->
+                    <div style="background: #fff; padding: 8px 12px; border-radius: 6px; border-left: 5px solid #0284c7; box-shadow: 2px 2px 5px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-arrow-alt-circle-right" style="color: #0284c7; font-size: 1.1rem;"></i>
+                        <span style="font-family: 'Caveat', cursive; font-size: 1.35rem; color: #111; line-height: 1.1;">20% Reduction in System Downtime</span>
+                    </div>
+                    <!-- Achievement 2 -->
+                    <div style="background: #fff; padding: 8px 12px; border-radius: 6px; border-left: 5px solid var(--orange); box-shadow: 2px 2px 5px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-arrow-alt-circle-right" style="color: var(--orange); font-size: 1.1rem;"></i>
+                        <span style="font-family: 'Caveat', cursive; font-size: 1.35rem; color: #111; line-height: 1.1;">Automated 30% Manual IT Tasks</span>
+                    </div>
+                    <!-- Achievement 3 -->
+                    <div style="background: #fff; padding: 8px 12px; border-radius: 6px; border-left: 5px solid #16a34a; box-shadow: 2px 2px 5px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-arrow-alt-circle-right" style="color: #16a34a; font-size: 1.1rem;"></i>
+                        <span style="font-family: 'Caveat', cursive; font-size: 1.35rem; color: #111; line-height: 1.1;">Maintained 100% ISO Compliance</span>
+                    </div>
+                    <!-- Achievement 4 -->
+                    <div style="background: #fff; padding: 8px 12px; border-radius: 6px; border-left: 5px solid #7c3aed; box-shadow: 2px 2px 5px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-arrow-alt-circle-right" style="color: #7c3aed; font-size: 1.1rem;"></i>
+                        <span style="font-family: 'Caveat', cursive; font-size: 1.35rem; color: #111; line-height: 1.1;">Seamless Support for 100+ Users</span>
+                    </div>
+                </div>
+            </div>
             
-            <ul class="approach-list" style="margin-top: 15px; background: #fff; padding: 15px 15px 15px 35px; border-radius: 5px; border-left: 5px solid var(--orange); box-shadow: 2px 3px 5px rgba(0,0,0,0.1);">
-                <li style="margin-bottom: 8px;">People First</li>
-                <li style="margin-bottom: 8px;">Secure Always</li>
-                <li style="margin-bottom: 8px;">Innovate Continuously</li>
-                <li>Deliver Excellence</li>
-            </ul>
         </div>
 
-    </div>
-
+	</div>
     <!-- Centered Footer Banner -->
     <div class="bottom-banner interactive">
         <div>
@@ -697,6 +872,95 @@
     </div>
 
 </div>
+
+<!-- COMIC STYLE SECURITY POPUP -->
+    <div id="security-popup" class="comic-modal-overlay">
+        <div class="comic-modal">
+            <div class="close-btn" onclick="closeSecurityPopup()">✖</div>
+            <h2>TOP SECRET! 🕵️‍♂️</h2>
+            <p>Answer the following question to reveal Mobile Number:</p>
+            <div class="question-box">What is Vikas Rawat's childhood name?</div>
+            <input type="text" id="security-answer" placeholder="Type answer here..." onkeydown="checkEnter(event)">
+            <button onclick="verifyAnswer()">UNLOCK 🔓</button>
+            <p id="error-msg" class="error-msg">Wrong Answer! Try Again.</p>
+        </div>
+    </div>
+
+<!-- JAVASCRIPT FOR SECURITY POPUP -->
+    <script>
+        function showSecurityPopup() {
+            if (document.getElementById('secret-phone').classList.contains('revealed-text')) return;
+            
+            document.getElementById('security-popup').style.display = 'flex';
+            document.getElementById('security-answer').value = '';
+            document.getElementById('error-msg').style.display = 'none';
+            
+            setTimeout(() => document.getElementById('security-answer').focus(), 100);
+
+            // Escape key listener add karna
+            window.addEventListener('keydown', handleEscapeKey);
+        }
+
+        function closeSecurityPopup() {
+            document.getElementById('security-popup').style.display = 'none';
+            // Listener remove karna taki memory bachi rahe
+            window.removeEventListener('keydown', handleEscapeKey);
+        }
+
+        // Naya function Escape key handle karne ke liye
+        function handleEscapeKey(event) {
+            if (event.key === 'Escape' || event.keyCode === 27) {
+                closeSecurityPopup();
+            }
+        }
+
+        function verifyAnswer() {
+            const answer = document.getElementById('security-answer').value.trim().toLowerCase();
+            // Case insensitive check for 'tinku'
+            if (answer === 'tinku') {
+                const phoneElement = document.getElementById('secret-phone');
+                
+                // Blur hatao aur clear text dikhao
+                phoneElement.classList.remove('blurred-text');
+                phoneElement.classList.add('revealed-text');
+                
+                // Calling functionality on kar do
+                phoneElement.href = "tel:+919911958778";
+                phoneElement.onclick = null; // Click hone par ab popup nahi aayega
+                
+                closeSecurityPopup();
+
+                // 30 SECONDS TIMER (30000 ms ke baad wapas blur karne ke liye)
+                setTimeout(() => {
+                    // Wapas blur class lagao
+                    phoneElement.classList.remove('revealed-text');
+                    phoneElement.classList.add('blurred-text');
+                    
+                    // Call link disable karo aur popup function wapas on karo
+                    phoneElement.href = "javascript:void(0);";
+                    phoneElement.onclick = showSecurityPopup;
+                }, 30000);
+
+            } else {
+                // Galat jawab hone par error message dikhao
+                document.getElementById('error-msg').style.display = 'block';
+                const modal = document.querySelector('.comic-modal');
+                modal.style.transform = 'translate(5px, 5px) rotate(-1deg)';
+                setTimeout(() => modal.style.transform = 'translate(0, 0) rotate(-1deg)', 100);
+            }
+        }
+		
+		// Enter key dabane par submit hone ke liye
+        function checkEnter(event) {
+            // 'Enter' key ya keyCode 13 dono ko check karega
+            if (event.key === 'Enter' || event.keyCode === 13) {
+                event.preventDefault(); // Page refresh hone se rokne ke liye
+                verifyAnswer();
+            }
+        }
+
+    </script>
+
 
 </body>
 </html>
